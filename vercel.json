@@ -1,0 +1,40 @@
+{
+  "version": 2,
+  "name": "mern-ecommerce-frontend",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/favicon.ico"
+    },
+    {
+      "src": "/manifest.json",
+      "dest": "/manifest.json"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "env": {
+    "REACT_APP_FETCH_PRODUCT": "@react_app_fetch_product",
+    "REACT_APP_ADMIN_UPDATE_PRODUCT": "@react_app_admin_update_product",
+    "REACT_APP_ADMIN_DELETE_PRODUCT": "@react_app_admin_delete_product",
+    "REACT_APP_GET_USER_DETAILS": "@react_app_get_user_details",
+    "REACT_APP_UPDATE_USER_DETAILS": "@react_app_update_user_details",
+    "REACT_APP_RESET_PASSWORD": "@react_app_reset_password",
+    "REACT_APP_DELETE_USER_DETAILS": "@react_app_delete_user_details"
+  }
+} 
