@@ -29,10 +29,7 @@ const SingleCategory = () => {
             const category = cat.toLowerCase(); // Normalize category name
             console.log('Fetching products for category:', category);
             
-            const response = await axios.post(
-                `${process.env.REACT_APP_PRODUCT_TYPE}`, 
-                { userType: category }
-            );
+            const response = await axios.get(`${process.env.REACT_APP_FETCH_PRODUCT}/category/${category}`);
             
             if (response.data && Array.isArray(response.data)) {
                 setProductData(response.data);
@@ -44,7 +41,7 @@ const SingleCategory = () => {
                 throw new Error('Invalid response format');
             }
         } catch (error) {
-            console.error('Error fetching products:', error);
+            console.error('Error fetching products:', error.response ? error.response.data : error.message);
             // Keep UI state consistent even if there's an error
             setProductData([]);
         } finally {
