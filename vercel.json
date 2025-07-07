@@ -28,5 +28,14 @@
       "dest": "/index.html"
     }
   ],
+  "env": {
+    "REACT_APP_FETCH_PRODUCT": "http://localhost:5000/products",
+    "REACT_APP_ADMIN_UPDATE_PRODUCT": "http://localhost:5000/admin/update",
+    "REACT_APP_ADMIN_DELETE_PRODUCT": "http://localhost:5000/admin/delete",
+    "REACT_APP_GET_USER_DETAILS": "http://localhost:5000/user/details",
+    "REACT_APP_UPDATE_USER_DETAILS": "http://localhost:5000/user/update",
+    "REACT_APP_RESET_PASSWORD": "http://localhost:5000/reset-password",
+    "REACT_APP_DELETE_USER_DETAILS": "http://localhost:5000/user/delete"
+  }
  
 } 
