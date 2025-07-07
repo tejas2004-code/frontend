@@ -10,7 +10,7 @@ const UserWishlistItem = ({ authToken, id, commonGetRequest }) => {
 
     useEffect(() => {
         commonGetRequest(process.env.REACT_APP_ADMIN_GET_WISHLIST, id, setUserWishlist);
-    }, [])
+    }, [commonGetRequest, id])
     const removeCartItemByAdmin = async (product) => {
         try {
             console.log(product._id);

@@ -3,8 +3,7 @@ import React from 'react'
 
 const CopyRight = (props) => {
     return (
-        <a  >
-
+        <div>
             <Typography variant="body1" fontWeight="bold" color="text.secondary" align="center" {...props} style={{ color: '#1976d2',  }}>
                 {' '}
                 {new Date().getFullYear()}
@@ -12,7 +11,7 @@ const CopyRight = (props) => {
                 {' © '}
                 Developed By Tejas Ghadigaonkar 
             </Typography>
-        </a>
+        </div>
     )
 }
 

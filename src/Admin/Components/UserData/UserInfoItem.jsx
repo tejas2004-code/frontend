@@ -14,12 +14,11 @@ const UserInfoItem = ({ commonGetRequest, id, authToken }) => {
     useEffect(() => {
         commonGetRequest(process.env.REACT_APP_ADMIN_GET_USER, id, setUserData);
         window.scroll(0, 0)
-
-    }, [])
+    }, [commonGetRequest, id])
 
     const deleteAccount = async () => {
         try {
-            const deleteUser = await axios.delete(`${process.env.REACT_APP_DELETE_USER_DETAILS}/${userData._id}`, {
+            await axios.delete(`${process.env.REACT_APP_DELETE_USER_DETAILS}/${userData._id}`, {
                 headers: {
                     'Authorization': authToken
                 }

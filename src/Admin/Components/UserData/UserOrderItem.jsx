@@ -8,7 +8,7 @@ const UserOrderItem = ({ commonGetRequest, id }) => {
 
     useEffect(() => {
         commonGetRequest(process.env.REACT_APP_ADMIN_GET_ORDER, id, setData);
-    }, [])
+    }, [commonGetRequest, id])
     const total = data.reduce((acc, curr) => (acc + curr.totalAmount), 0);
     return (
         <Container>

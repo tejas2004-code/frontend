@@ -11,7 +11,7 @@ const AdminHomePage = () => {
 
     useEffect(() => {
         getUser();
-    }, [])
+    }, [getUser])
     let navigate = useNavigate()
     let authToken = localStorage.getItem("Authorization")
     const getUser = async () => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { AiOutlineSearch } from 'react-icons/ai';
 import {
     Table,
@@ -46,7 +46,7 @@ const ProductTable = ({ data, getProductInfo }) => {
         },
         
     ];
-    const filterData = () => {
+    const filterData = useCallback(() => {
         if (searchTerm === '') {
             return data;
         }
@@ -71,7 +71,7 @@ const ProductTable = ({ data, getProductInfo }) => {
                 (item.gender &&
                     item.gender.toLowerCase().includes(searchTerm.toLowerCase()))
         );
-    };
+    }, [data, searchTerm]);
 
     const handleSearch = (event) => {
         const value = event.target.value;
@@ -82,7 +82,7 @@ const ProductTable = ({ data, getProductInfo }) => {
 
     useEffect(() => {
         setFilteredData(filterData());
-    }, [data, searchTerm]);
+    }, [filterData]);
 
 
     return (

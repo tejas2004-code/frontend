@@ -4,7 +4,6 @@ import CountUp from 'react-countup';
 
 
 const Widget = ({ numbers, heading, color, icon }) => {
-    const isSmallScreen = useMediaQuery('(max-width:600px)');
     const [value, setValue] = useState(0);
     const endValue = numbers;
 

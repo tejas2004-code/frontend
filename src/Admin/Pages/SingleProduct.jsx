@@ -11,7 +11,6 @@ import CopyRight from '../../Components/CopyRight/CopyRight';
 const SingleProduct = () => {
     const [product, setProduct] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
     const [openAlert, setOpenAlert] = useState(false);
 
     let authToken = localStorage.getItem("Authorization")
@@ -27,12 +26,12 @@ const SingleProduct = () => {
         brand: ""
     });
 
-    const { id, type } = useParams();
+    const { id } = useParams();
     let navigate = useNavigate()
     useEffect(() => {
         getSingleProduct()
         window.scroll(0, 0)
-    }, [])
+    }, [getSingleProduct])
     const getSingleProduct = async () => {
         try {
             const { data } = await axios.get(`${process.env.REACT_APP_FETCH_PRODUCT}/${id}`);
@@ -54,7 +53,6 @@ const SingleProduct = () => {
         } catch (error) {
             console.error('Error fetching product:', error);
             toast.error('Failed to load product details', { autoClose: 1500, theme: 'colored' });
-            setError(true);
         } finally {
             setLoading(false);
         }
@@ -93,7 +91,6 @@ const SingleProduct = () => {
         }
 
         if (!productFilter.includes(productInfo.category)) {
-            setError(true);
             toast.error('Invalid category selected', { autoClose: 1500 });
             return;
         }
