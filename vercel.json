@@ -35,7 +35,7 @@
     "REACT_APP_GET_USER_DETAILS": "https://backend-2ohptuzk-tejas-ghadigaonkars-projects.vercel.app/api/user/details",
     "REACT_APP_UPDATE_USER_DETAILS": "https://backend-2ohptuzk-tejas-ghadigaonkars-projects.vercel.app/api/user/update",
     "REACT_APP_RESET_PASSWORD": "https://backend-2ohptuzk-tejas-ghadigaonkars-projects.vercel.app/api/password/reset-password",
-    "REACT_APP_DELETE_USER_DETAILS": "https://backend-2ohptuzk-tejas-ghadigaonkars-projects.vercel.app/api/user/delete"
+    "REACT_APP_DELETE_USER_DETAILS": "https://backend-2ohptuzk-tejas-ghadigaonkars-projects.vercel.app/api/user/delete",
      "CI": "false"
   }
 } 
