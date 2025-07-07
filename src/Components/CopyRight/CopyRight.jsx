@@ -10,7 +10,7 @@ const CopyRight = (props) => {
                 {new Date().getFullYear()}
                 {/* {'.'} */}
                 {' © '}
-                Developed By Tejas Ghadigaonkar and Arul Nadar
+                Developed By Tejas Ghadigaonkar 
             </Typography>
         </a>
     )
