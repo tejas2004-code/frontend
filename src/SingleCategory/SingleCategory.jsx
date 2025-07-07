@@ -23,26 +23,29 @@ const SingleCategory = () => {
         window.scroll(0, 0)
     }, [])
 
-    const getCategoryProduct = async () => {
+   const getCategoryProduct = async () => {
     try {
         setIsLoading(true);
         const category = cat.toLowerCase();
         console.log('Fetching products for category:', category);
-        
-        const API_BASE_URL = process.env.REACT_APP_API_URL;
 
         const response = await fetch(`${API_BASE_URL}/api/product/category/${category}`);
-        const data = await response.json(); // ✅ Important for fetch
+
+        if (!response.ok) {
+            // Log status for debug (like 404, 500, etc.)
+            console.error(`HTTP Error: ${response.status}`);
+            throw new Error(`Server responded with status ${response.status}`);
+        }
+
+        const data = await response.json();
 
         if (Array.isArray(data)) {
             setProductData(data);
-            if (data.length === 0) {
-                console.log('No products found for category:', category);
-            }
         } else {
             console.error('Invalid response format:', data);
             throw new Error('Invalid response format');
         }
+
     } catch (error) {
         console.error('Error fetching products:', error.message || error);
         setProductData([]);
@@ -50,6 +53,7 @@ const SingleCategory = () => {
         setIsLoading(false);
     }
 };
+
 
     const productFilter = []
 
