@@ -29,7 +29,10 @@ const SingleCategory = () => {
             const category = cat.toLowerCase(); // Normalize category name
             console.log('Fetching products for category:', category);
             
-            const response = await axios.get(`${process.env.REACT_APP_FETCH_PRODUCT}/category/${category}`);
+            const API_BASE_URL = process.env.REACT_APP_API_URL;
+
+            const response = await fetch(`${API_BASE_URL}/api/products/category/${category}`);
+
             
             if (response.data && Array.isArray(response.data)) {
                 setProductData(response.data);
