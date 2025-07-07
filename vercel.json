@@ -38,5 +38,4 @@
     "REACT_APP_DELETE_USER_DETAILS": "https://backend-2ohptuzk-tejas-ghadigaonkars-projects.vercel.app/api/user/delete"
      "CI": "false"
   }
- 
 } 
