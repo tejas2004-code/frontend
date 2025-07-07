@@ -44,25 +44,33 @@ const Login = () => {
         toast.error("Please enter valid password", { autoClose: 500, theme: 'colored' })
       }
       else if (credentials.email && credentials.password) {
-        const sendAuth = await axios.post(`${process.env.REACT_APP_LOGIN}`, { email: credentials.email, password: credentials.password })
-        const receive = await sendAuth.data
-        if (receive.success === true) {
-          toast.success("Login Successfully", { autoClose: 500, theme: 'colored' })
-          localStorage.setItem('Authorization', receive.authToken)
-          navigate('/')
+        const loginUrl = process.env.REACT_APP_LOGIN;
+        if (!loginUrl) {
+          toast.error("Login endpoint is not set. Please check your environment variables.", { autoClose: 500, theme: 'colored' });
+          return;
         }
-        else{
-          toast.error("Something went wrong, Please try again", { autoClose: 500, theme: 'colored' })
-          navigate('/')
+        const sendAuth = await axios.post(loginUrl, { email: credentials.email, password: credentials.password });
+        const receive = sendAuth.data;
+        if (receive.success === true) {
+          toast.success("Login Successfully", { autoClose: 500, theme: 'colored' });
+          localStorage.setItem('Authorization', receive.authToken);
+          navigate('/');
+        } else {
+          toast.error("Something went wrong, Please try again", { autoClose: 500, theme: 'colored' });
+          navigate('/');
         }
       }
     }
     catch (error) {
-      error.response.data.error.length === 1 ?
-        toast.error(error.response.data.error[0].msg, { autoClose: 500, theme: 'colored' })
-        : toast.error(error.response.data.error, { autoClose: 500, theme: 'colored' })
+      console.error('Login error:', error);
+      if (error.response && error.response.data && Array.isArray(error.response.data.error) && error.response.data.error.length === 1) {
+        toast.error(error.response.data.error[0].msg, { autoClose: 500, theme: 'colored' });
+      } else if (error.response && error.response.data && error.response.data.error) {
+        toast.error(error.response.data.error, { autoClose: 500, theme: 'colored' });
+      } else {
+        toast.error("An unexpected error occurred during login.", { autoClose: 500, theme: 'colored' });
+      }
     }
-
   }
 
 
