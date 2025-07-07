@@ -28,13 +28,5 @@
       "dest": "/index.html"
     }
   ],
-  "env": {
-   
-    "REACT_APP_ADMIN_UPDATE_PRODUCT": "@react_app_admin_update_product",
-    "REACT_APP_ADMIN_DELETE_PRODUCT": "@react_app_admin_delete_product",
-    "REACT_APP_GET_USER_DETAILS": "@react_app_get_user_details",
-    "REACT_APP_UPDATE_USER_DETAILS": "@react_app_update_user_details",
-    "REACT_APP_RESET_PASSWORD": "@react_app_reset_password",
-    "REACT_APP_DELETE_USER_DETAILS": "@react_app_delete_user_details"
-  }
+ 
 } 
