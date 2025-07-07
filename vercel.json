@@ -1,0 +1,42 @@
+{
+  "version": 2,
+  "name": "mern-ecommerce-frontend",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/favicon.ico"
+    },
+    {
+      "src": "/manifest.json",
+      "dest": "/manifest.json"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "env": {
+    "REACT_APP_FETCH_PRODUCT": "https://backend-2ohptuzk-tejas-ghadigaonkars-projects.vercel.app/api/product",
+    "REACT_APP_ADMIN_UPDATE_PRODUCT": "https://backend-2ohptuzk-tejas-ghadigaonkars-projects.vercel.app/api/admin/update",
+    "REACT_APP_ADMIN_DELETE_PRODUCT": "https://backend-2ohptuzk-tejas-ghadigaonkars-projects.vercel.app/api/admin/delete",
+    "REACT_APP_RESET_PASSWORD": "https://backend-2ohptuzk-tejas-ghadigaonkars-projects.vercel.app/api/password/reset-password",
+    "REACT_APP_LOGIN": "https://backend-nu-lime.vercel.app/api/auth/login",
+    "REACT_APP_GET_USER_DETAILS": "https://backend-nu-lime.vercel.app/api/auth/getuser",
+    "REACT_APP_UPDATE_USER_DETAILS": "https://backend-nu-lime.vercel.app/api/auth/updateuser",
+    "REACT_APP_DELETE_USER_DETAILS": "https://backend-nu-lime.vercel.app/api/auth/delete",
+    "CI": "false"
+  }
+} 
