@@ -24,33 +24,32 @@ const SingleCategory = () => {
     }, [])
 
     const getCategoryProduct = async () => {
-        try {
-            setIsLoading(true);
-            const category = cat.toLowerCase(); // Normalize category name
-            console.log('Fetching products for category:', category);
-            
-            const API_BASE_URL = process.env.REACT_APP_API_URL;
+    try {
+        setIsLoading(true);
+        const category = cat.toLowerCase();
+        console.log('Fetching products for category:', category);
+        
+        const API_BASE_URL = process.env.REACT_APP_API_URL;
 
-            const response = await fetch(`${API_BASE_URL}/api/product/category/${category}`);
+        const response = await fetch(`${API_BASE_URL}/api/product/category/${category}`);
+        const data = await response.json(); // ✅ Important for fetch
 
-            
-            if (response.data && Array.isArray(response.data)) {
-                setProductData(response.data);
-                if (response.data.length === 0) {
-                    console.log('No products found for category:', category);
-                }
-            } else {
-                console.error('Invalid response format:', response.data);
-                throw new Error('Invalid response format');
+        if (Array.isArray(data)) {
+            setProductData(data);
+            if (data.length === 0) {
+                console.log('No products found for category:', category);
             }
-        } catch (error) {
-            console.error('Error fetching products:', error.response ? error.response.data : error.message);
-            // Keep UI state consistent even if there's an error
-            setProductData([]);
-        } finally {
-            setIsLoading(false);
+        } else {
+            console.error('Invalid response format:', data);
+            throw new Error('Invalid response format');
         }
-    };
+    } catch (error) {
+        console.error('Error fetching products:', error.message || error);
+        setProductData([]);
+    } finally {
+        setIsLoading(false);
+    }
+};
 
     const productFilter = []
 
