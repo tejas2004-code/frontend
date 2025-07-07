@@ -31,7 +31,7 @@ const SingleCategory = () => {
             
             const API_BASE_URL = process.env.REACT_APP_API_URL;
 
-            const response = await fetch(`${API_BASE_URL}/api/products/category/${category}`);
+            const response = await fetch(`${API_BASE_URL}/api/product/category/${category}`);
 
             
             if (response.data && Array.isArray(response.data)) {
